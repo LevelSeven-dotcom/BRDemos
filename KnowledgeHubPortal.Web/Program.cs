@@ -17,6 +17,7 @@ namespace KnowledgeHubPortal.Web
             builder.Services.AddScoped<ICatagoryRepository, CatagoryRepository>();
             builder.Services.AddScoped<IArticleRepository, ArticleRepository>();
 
+
             //builder.Services.AddSingleton<KHPortalDbContext, KHPortalDbContext>();
             //builder.Services.AddDbContext<KHPortalDbContext>();
 
@@ -30,13 +31,17 @@ namespace KnowledgeHubPortal.Web
             builder.Services.AddDbContext<KHPortalDbContext>(options => options.UseSqlServer(connectionString));
 
 
-            builder.Services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(connectionString));
+            builder.Services.AddDbContext<ApplicationDbContext>(options =>options.UseSqlServer(connectionString));
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+                
+            
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddResponseCaching();
 
             var app = builder.Build();
 
@@ -52,6 +57,8 @@ namespace KnowledgeHubPortal.Web
                 app.UseHsts();
             }
 
+            app.UseResponseCaching();
+            
             app.UseHttpsRedirection();
             app.UseRouting();
 

@@ -1,0 +1,89 @@
+﻿@model X.PagedList.IPagedList<KnowledgeHubPortal.Domain.Entities.Article>
+@using Humanizer
+
+@using X.PagedList.Mvc.Core; <!-- Required for HtmlHelper -->
+@{
+    ViewData["Title"] = "Browse";
+}
+
+<h1>Browse Articles</h1>
+
+
+<div class="mt-2 mb-2">
+    <form action="/Articles/Browse" method="post" class="row g-2 align-items-center">
+        @Html.Partial("_SearchArticlesPartial")
+
+    </form>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>
+                @*@Html.DisplayNameFor(model => model.First().Title)*@
+                Title
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Description)*@
+                Description
+            </th>
+
+
+
+            <th>
+                @*@Html.DisplayNameFor(model => model.SubmitedBy)*@
+                Submited By
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.DateSubmited)*@
+                Date Submited
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    <a href="@item.ArticleUrl">@item.Title</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.SubmitedBy)
+                </td>
+                <td>
+                    @item.DateSubmited.Humanize(false)
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<!-- Pagination Controls -->
+@*@Html.PagedListPager(Model, page => Url.Action("Browse", new { page }))*@
+
+@*//new PagedListRenderOptions
+    //{
+    //    DisplayLinkToFirstPage = true,
+    //    DisplayLinkToLastPage = true,
+    //    DisplayLinkToPreviousPage = true,
+    //    DisplayLinkToNextPage = true
+    //})*@
+
+@Html.PagedListPager(Model, page => Url.Action("Browse", new { page }),
+        new PagedListRenderOptions
+    {
+        UlElementClasses = new[] { "pagination" },
+        LiElementClasses = new[] { "page-item" },
+        PageClasses = new[] { "page-link" }
+    })

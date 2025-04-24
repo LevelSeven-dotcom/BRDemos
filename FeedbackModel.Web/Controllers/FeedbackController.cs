@@ -8,19 +8,19 @@ namespace FeedbackModel.Web.Controllers
     {
         private readonly FeedbackRepository _repository;
 
-        public FeedbackController()
+        public FeedbackController(FeedbackRepository repository)
         {
-            _repository = new FeedbackRepository();  // instantiate repository
+            _repository = repository;
         }
 
-        // Action for the Index page
+        // action for index
         public IActionResult Index()
         {
-            var feedbacks = _repository.GetAll();  // Fetch feedback data
-            return View(feedbacks);  // Pass data to the view
+            var feedbacks = _repository.GetAll(); 
+            return View(feedbacks);
         }
 
-        // Create (GET): Show the form to create new feedback
+        //create GET
         public IActionResult Create()
         {
             return View();
@@ -30,7 +30,7 @@ namespace FeedbackModel.Web.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Feedback feedback)
         {
-            // Log received feedback data
+            
             Console.WriteLine($"Received Feedback: {feedback.StudentName}, {feedback.Course}, {feedback.Rating}");
 
             if (ModelState.IsValid)
@@ -39,13 +39,13 @@ namespace FeedbackModel.Web.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            // Log invalid model state
+            
             Console.WriteLine("Model state is invalid.");
             return View(feedback);
         }
 
 
-        // Edit (GET): Show form to edit feedback based on ID
+        //edit GET
         public IActionResult Edit(int id)
         {
             var feedback = _repository.GetById(id);
@@ -56,7 +56,7 @@ namespace FeedbackModel.Web.Controllers
             return View(feedback);
         }
 
-        // Edit (POST): Handle form submission for editing feedback
+        //POST edit
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, Feedback feedback)
@@ -74,7 +74,7 @@ namespace FeedbackModel.Web.Controllers
             return View(feedback);
         }
 
-        // Delete (GET): Show confirmation to delete feedback
+        //delete GET
         public IActionResult Delete(int id)
         {
             var feedback = _repository.GetById(id);
@@ -85,7 +85,7 @@ namespace FeedbackModel.Web.Controllers
             return View(feedback);
         }
 
-        // DeleteConfirmed (POST): Handle actual deletion of feedback
+        
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int id)

@@ -7,33 +7,30 @@ namespace FeedbackModel.Domain.Repositories
 {
     public class FeedbackRepository
     {
-        // Static list to store feedback temporarily
+       
         public static List<Feedback> _feedbacks = new List<Feedback>
         {
-            new Feedback { Id = 1, StudentName = "John", Course = "Math", Rating = 5, DateSubmitted = DateTime.Now },
-            new Feedback { Id = 2, StudentName = "Alice", Course = "Science", Rating = 4, DateSubmitted = DateTime.Now }
+            new Feedback { Id = 1, StudentName = "Lobo", Course = "Math", Rating = 4, DateSubmitted = DateTime.Now, Feedbacks = "Good" },
+            new Feedback { Id = 2, StudentName = "Leonard", Course = "Social Studies", Rating = 4, DateSubmitted = DateTime.Now, Feedbacks = "Great" }
         };
-
-        // Get all feedbacks
+       
         public List<Feedback> GetAll()
         {
             return _feedbacks;
         }
 
-        // Get feedback by ID
         public Feedback GetById(int id)
         {
             return _feedbacks.FirstOrDefault(f => f.Id == id);
         }
 
-        //add new feedback
         public void Add(Feedback feedback)
         {
             feedback.Id = _feedbacks.Count > 0 ? _feedbacks.Max(f => f.Id) + 1 : 1;
             feedback.DateSubmitted = DateTime.Now;
             _feedbacks.Add(feedback);
 
-            // Log the list of all feedbacks to confirm the new feedback is added
+            
             Console.WriteLine("All Feedbacks after add:");
             foreach (var f in _feedbacks)
             {
@@ -41,8 +38,6 @@ namespace FeedbackModel.Domain.Repositories
             }
         }
 
-
-        // Update existing feedback
         public void Update(Feedback feedback)
         {
             var existingFeedback = _feedbacks.FirstOrDefault(f => f.Id == feedback.Id);
@@ -55,7 +50,7 @@ namespace FeedbackModel.Domain.Repositories
             }
         }
 
-        // Delete feedback by ID
+        
         public void Delete(int id)
         {
             var feedback = _feedbacks.FirstOrDefault(f => f.Id == id);

@@ -87,6 +87,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedbackModel.Domain", "Fee
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedbackModel.Web", "FeedbackModel.Web\FeedbackModel.Web.csproj", "{C9141B68-0D6B-4730-9E02-00B68E0C9E5C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MVC Demo", "MVC Demo", "{C950B3FB-9DAD-425C-85DA-10AFD3B073B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactsManagementWebApp", "ContactsManagementWebApp\ContactsManagementWebApp.csproj", "{2F9C7BAE-4479-4E71-9968-5F2D02C88670}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -205,6 +209,10 @@ Global
 		{C9141B68-0D6B-4730-9E02-00B68E0C9E5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9141B68-0D6B-4730-9E02-00B68E0C9E5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9141B68-0D6B-4730-9E02-00B68E0C9E5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F9C7BAE-4479-4E71-9968-5F2D02C88670}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F9C7BAE-4479-4E71-9968-5F2D02C88670}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F9C7BAE-4479-4E71-9968-5F2D02C88670}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F9C7BAE-4479-4E71-9968-5F2D02C88670}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -239,6 +247,7 @@ Global
 		{EFE2CF0B-1B74-401A-9509-E2F66AE77811} = {AA3FFF5D-4D41-4B52-826A-599C471CB02B}
 		{2A5FBF95-572A-4C53-BD40-D164240376A1} = {E56B3903-9D8A-4B84-9FF2-CF15022D8DA3}
 		{C9141B68-0D6B-4730-9E02-00B68E0C9E5C} = {22A36224-15B6-4555-BF9B-AE779AC01F98}
+		{2F9C7BAE-4479-4E71-9968-5F2D02C88670} = {C950B3FB-9DAD-425C-85DA-10AFD3B073B1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4740F415-D277-477F-97D6-25DB99093CAB}

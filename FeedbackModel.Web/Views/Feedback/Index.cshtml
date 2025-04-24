@@ -11,6 +11,7 @@
                 <th style="padding:12px; border:1px solid #ddd;">Course</th>
                 <th style="padding:12px; border:1px solid #ddd;">Rating</th>
                 <th style="padding:12px; border:1px solid #ddd;">Date Submitted</th>
+                <th style="padding:12px; border:1px solid #ddd;">Feedback</th>
                 <th style="padding:12px; border:1px solid #ddd;">Actions</th>
             </tr>
         </thead>
@@ -26,6 +27,7 @@
                     <td style="padding:12px; border:1px solid #ddd;">@feedback.Course</td>
                     <td style="padding:12px; border:1px solid #ddd;">@feedback.Rating</td>
                     <td style="padding:12px; border:1px solid #ddd;">@feedback.DateSubmitted.ToShortDateString()</td>
+                    <td style="padding:12px; border:1px solid #ddd;">@feedback.Feedbacks</td>
                     <td style="padding:12px; border:1px solid #ddd;">
                         <a href="@Url.Action("Edit", "Feedback", new { id = feedback.Id })" style="color:#2196F3; text-decoration:none;">Edit</a> |
                         <a href="@Url.Action("Delete", "Feedback", new { id = feedback.Id })" style="color:#f44336; text-decoration:none;">Delete</a>
@@ -34,6 +36,7 @@
                 index++;
             }
         </tbody>
+
     </table>
 }
 else

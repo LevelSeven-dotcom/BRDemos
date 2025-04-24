@@ -1,3 +1,4 @@
+using FeedbackModel.Domain.Repositories;
 using FeedbackModel.Web.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +10,10 @@ namespace FeedbackModel.Web
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            //IOC registration
+            builder.Services.AddScoped<FeedbackRepository>();
+
 
             // Add services to the container.
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");

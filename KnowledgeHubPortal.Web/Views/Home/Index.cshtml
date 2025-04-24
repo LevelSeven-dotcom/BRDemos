@@ -1,11 +1,31 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    //Layout = "_MyLayout";
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome to Knowledge Hub Portal</h1>
-    <p>Knowledge hub is a web portal where a user can submit her/his portal 
-    URL under a specific category to be shared on knowledge hub. Admin can approve or reject 
-    the URL submitted by the user and in each case an email is sent out to the user. 
-    Once the link is approved, it will be available on the knowledge hub portal.</p>
+    <p>
+        Knowledge hub is a web portal where a user can submit her/his portal
+        URL under a specific category to be shared on knowledge hub. Admin can approve or reject
+        the URL submitted by the user and in each case an email is sent out to the user.
+        Once the link is approved, it will be available on the knowledge hub portal.
+    </p>
 </div>
+
+<h1>
+    @Component.InvokeAsync("SimpleDate").Result
+</h1>
+
+@Component.InvokeAsync("CatagoryLinks").Result
+
+
+@* @section S1
+{
+    <h3> This is Section 1 content </h3>
+}
+
+@section S2
+{
+    <h3> This is Section 2 content </h3>
+} *@
