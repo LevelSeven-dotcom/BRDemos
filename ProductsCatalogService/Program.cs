@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+using ProductsCatalogService.Data;
 
 namespace ProductsCatalogService
 {
@@ -8,14 +10,20 @@ namespace ProductsCatalogService
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            builder.Services.AddControllers()
+                .AddXmlSerializerFormatters();
 
-            builder.Services.AddControllers();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
             
             //adding swagger services
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddDbContext<ProductsDbContext>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("MyConnection"));
+            });
 
             var app = builder.Build();
 
